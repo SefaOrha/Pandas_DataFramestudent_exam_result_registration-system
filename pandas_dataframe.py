@@ -1,32 +1,34 @@
 import pandas as pd
 
-ogrenci_sayisi=int(input("Kaç öğrenci kaydedeceksiniz?:"))
 namelist=[]
 familyNamelist=[]
 SchoolNamelist=[]
 ortalamalist=[]
+ogrenci_sayisi=int(input("Kaç öğrenci kaydedeceksiniz?:"))
 
-
-
-
-
-for i in range(ogrenci_sayisi):
+i=1
+while True:
+    
     name=input("İsim Giriniz:")
     familyName=input("Soyad giriniz:")
-    SchoolName=input("Okul No giriniz:")
+    SchoolName=int(input("Okul No giriniz:"))
     vizeNotu=int(input("Vize notu giriniz:"))
-    if vizeNotu>=100:
-        print("100'den büyük sayı giremezsiniz.")
-        vizeNotu=int(input("Vize notu giriniz:"))
+    if vizeNotu>100:
+        print("Vize notu 100'den büyük olamaz.Başa dönün")
+        continue
     finalNotu=int(input("Final notu giriniz:"))
-    if finalNotu>=100:
-        print("100'den büyük sayı giremezsiniz.")
-        finalNotu=int(input("Final notu giriniz:"))
+    if finalNotu>100:
+        print("Final notu 100'den büyük olamaz.Başa dönün")
+        continue
     ortalama=(vizeNotu*0.4)+(finalNotu*0.6)
     namelist.append(name)
     familyNamelist.append(familyName)
     SchoolNamelist.append(SchoolName)
     ortalamalist.append(ortalama)
+    if i==ogrenci_sayisi:
+        break
+    i+=1
+   
 
 
     
@@ -55,3 +57,4 @@ else:
 
 print(seri1)
 dosya=seri1.to_excel("C:/Users/Sefa/Desktop/Bilgiler.xlsx",sheet_name="Sınav_Sonuçları" )
+
